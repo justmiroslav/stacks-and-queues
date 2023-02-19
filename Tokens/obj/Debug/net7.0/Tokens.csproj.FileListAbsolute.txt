@@ -1,0 +1,15 @@
+C:\Users\Admin\RiderProjects\tokens\Tokens\bin\Debug\net7.0\Tokens.exe
+C:\Users\Admin\RiderProjects\tokens\Tokens\bin\Debug\net7.0\Tokens.deps.json
+C:\Users\Admin\RiderProjects\tokens\Tokens\bin\Debug\net7.0\Tokens.runtimeconfig.json
+C:\Users\Admin\RiderProjects\tokens\Tokens\bin\Debug\net7.0\Tokens.dll
+C:\Users\Admin\RiderProjects\tokens\Tokens\bin\Debug\net7.0\Tokens.pdb
+C:\Users\Admin\RiderProjects\tokens\Tokens\obj\Debug\net7.0\Tokens.csproj.AssemblyReference.cache
+C:\Users\Admin\RiderProjects\tokens\Tokens\obj\Debug\net7.0\Tokens.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\RiderProjects\tokens\Tokens\obj\Debug\net7.0\Tokens.AssemblyInfoInputs.cache
+C:\Users\Admin\RiderProjects\tokens\Tokens\obj\Debug\net7.0\Tokens.AssemblyInfo.cs
+C:\Users\Admin\RiderProjects\tokens\Tokens\obj\Debug\net7.0\Tokens.csproj.CoreCompileInputs.cache
+C:\Users\Admin\RiderProjects\tokens\Tokens\obj\Debug\net7.0\Tokens.dll
+C:\Users\Admin\RiderProjects\tokens\Tokens\obj\Debug\net7.0\refint\Tokens.dll
+C:\Users\Admin\RiderProjects\tokens\Tokens\obj\Debug\net7.0\Tokens.pdb
+C:\Users\Admin\RiderProjects\tokens\Tokens\obj\Debug\net7.0\Tokens.genruntimeconfig.cache
+C:\Users\Admin\RiderProjects\tokens\Tokens\obj\Debug\net7.0\ref\Tokens.dll
