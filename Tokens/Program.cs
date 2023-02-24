@@ -7,7 +7,7 @@
         List<string> opers1 = new List<string> { "+", "-", "*", "/", "^", "(", ")" };
         List<string> opers2 = new List<string> { "+", "-", "*", "/", "^"};
         Queue<string> queue = new Queue<string>();
-        Stack<string> stack = new Stack<string>();
+        MyStack<string> stack = new MyStack<string>(50);
         string[] tokens = new string[50];
         int priority = 0;
         string buffer = "";
@@ -146,7 +146,7 @@
             }
             else if (!opers2.Contains(q))
             {
-                double newQ = double.Parse(q);
+                double newQ = double.Parse((string)q);
                 stack.Push(newQ.ToString());
             }
         }
