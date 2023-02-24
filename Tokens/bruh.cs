@@ -1,60 +1,117 @@
-internal class MyStack<T>
+public class ArrayList
 {
-    private T[] _items;
-    private int _pointer;
-
-    public MyStack(int size)
+    private string[] _array = new string[10];
+    private int _pointer = 0;
+    public void Add(string element)
     {
-        _items = new T[size];
-        _pointer = -1;
-    }
+        _array[_pointer] = element;
+        _pointer += 1;
 
-    public void Push(T item)
-    {
-        if (_pointer == _items.Length - 1)
+        if (_pointer == _array.Length)
         {
-            throw new StackOverflowException();
-        }
-        _pointer++;
-        _items[_pointer] = item;
-    }
+            var extendedArray = new string[_array.Length * 2];
+            for (var i = 0; i < _array.Length; i++)
+            {
+                extendedArray[i] = _array[i];
+            }
 
-    public T Pop()
+            _array = extendedArray;
+        }
+    }
+    public int IndexOf(string element)
     {
-        if (_pointer == -1)
+        for (var i = 0; i < _array.Length; i++)
         {
-            throw new InvalidOperationException();
+            if (_array[i] == element)
+            {
+                return i;
+            }
         }
-        T item = _items[_pointer];
-        _pointer--;
-        return item;
+        return -1;
     }
 
-    public T Peek()
+    public bool Contains(string element)
     {
-        if (_pointer == -1)
-        {
-            throw new InvalidOperationException();
-        }
-        return _items[_pointer];
-    }
-
-    public int Count
-    {
-        get { return _pointer + 1; }
+        return IndexOf(element) != -1;
     }
 }
-public class MyQueue<T>
+
+public class MyStack
 {
-    private List<T> items;
+    private const int Capacity = 50;
+
+    private string[] _array = new string [Capacity];
+    
+    private int _pointer = 0;
+
+    public void Push(string value)
+    {
+        _array[_pointer] = value;
+        _pointer++;
+    }
+
+    public string Pop()
+    {
+        string result = _array[_pointer - 1];
+        _pointer--;
+        return result;
+    }
+
+    public int Count()
+    {
+        return _pointer;
+    }
+
+    public string Peek()
+    {
+        if (_pointer == -1)
+        {
+            throw new InvalidOperationException();
+        }
+        return _array[_pointer - 1];
+    }
+}
+
+
+public class MyQueue
+{
+    private const int Capacity = 50;
+    private string[] _array = new string [Capacity];
+
+    private int _pointer = 0;
+    private int _headPoint;
+    private int _tailPoint;
 
     public MyQueue()
     {
-        items = new List<T>();
+        _headPoint = 0;
+        _tailPoint = -1;
     }
 
-    public void Enqueue(T item)
+    public void Enqueue(string value)
     {
-        items.Add(item);
+        _tailPoint++;
+        _array[_tailPoint] = value;
+    }
+
+    public string Dequeue(string value)
+    {
+        value = _array[_headPoint];
+        _headPoint++;
+        return value;
+    }
+
+    public int Count()
+    {
+        return _pointer + 1;
+    }
+
+    public bool Contains(string value)
+    {
+        if (_array.Contains(value))
+        {
+            return true;
+        }
+        return false;
     }
 }

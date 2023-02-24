@@ -6,8 +6,16 @@
         string expression = Console.ReadLine();
         List<string> opers1 = new List<string> { "+", "-", "*", "/", "^", "(", ")" };
         List<string> opers2 = new List<string> { "+", "-", "*", "/", "^"};
+        //var opers1 = new ArrayList();
+        //opers1 = new ArrayList({ "+", "-" })
+        //opers1.Add("+"); opers1.Add("-"); opers1.Add("*"); opers1.Add("/");
+        //opers1.Add("^"); opers1.Add("("); opers1.Add(")");
+        //var opers2 = new ArrayList();
+        //opers2.Add("+"); opers2.Add("-"); opers2.Add("*"); opers2.Add("/");
+        //opers2.Add("^");
         Queue<string> queue = new Queue<string>();
-        MyStack<string> stack = new MyStack<string>(50);
+        var stack = new MyStack();
+        //var queue = new MyQueue();
         string[] tokens = new string[50];
         int priority = 0;
         string buffer = "";
@@ -61,11 +69,11 @@
                     { "^", 3 }
                 };
                 int curPriority = priorities[s];
-                while (stack.Count > 0 && (stack.Peek() == "*" || stack.Peek() == "/" || stack.Peek() == "^"))
+                while (stack.Count() > 0 && (stack.Peek() == "*" || stack.Peek() == "/" || stack.Peek() == "^"))
                 {
                     queue.Enqueue(stack.Pop());
                 }
-                if (stack.Count > 0 && (stack.Peek() == "+" || stack.Peek() == "-"))
+                if (stack.Count() > 0 && (stack.Peek() == "+" || stack.Peek() == "-"))
                 {
                     int lastPriority = 1;
                     string lastOper = stack.Peek();
@@ -97,25 +105,25 @@
             }
             else if (s == ")")
             {
-                while (stack.Count > 0 && stack.Peek() != "(")
+                while (stack.Count() > 0 && stack.Peek() != "(")
                 {
                     queue.Enqueue(stack.Pop());
                 }
 
-                if (stack.Count > 0 && stack.Peek() == "(")
+                if (stack.Count() > 0 && stack.Peek() == "(")
                 {
                     stack.Pop();
                 }
             }
         }
 
-        while (stack.Count > 0)
+        while (stack.Count() > 0)
         {
             string lastOperator = stack.Pop();
             queue.Enqueue(lastOperator);
         }
-
         foreach (var q in queue)
+        //foreach (queue.Contain(q))
         {
             if (q is null)
             {
