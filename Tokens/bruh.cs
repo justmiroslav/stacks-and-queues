@@ -1,3 +1,41 @@
+public class ArrayList
+{
+    private string[] _array = new string[10];
+    private int _pointer = 0;
+    public void Add(string element)
+    {
+        _array[_pointer] = element;
+        _pointer += 1;
+
+        if (_pointer == _array.Length)
+        {
+            var extendedArray = new string[_array.Length * 2];
+            for (var i = 0; i < _array.Length; i++)
+            {
+                extendedArray[i] = _array[i];
+            }
+
+            _array = extendedArray;
+        }
+    }
+    public int IndexOf(string element)
+    {
+        for (var i = 0; i < _array.Length; i++)
+        {
+            if (_array[i] == element)
+            {
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+    public bool Contains(string element)
+    {
+        return IndexOf(element) != -1;
+    }
+}
 public class MyStack<T>
 {
     private T[] _items;
@@ -62,3 +100,10 @@ public class MyQueue<T>
         return _tailPoint + 1;
     }
 }
+
+//ArrayList opers1 = new ArrayList();
+//opers1.Add("+"); opers1.Add("-"); opers1.Add("*"); opers1.Add("/");
+//opers1.Add("^"); opers1.Add("("); opers1.Add(")");
+//ArrayList opers2 = new ArrayList();
+//opers2.Add("+"); opers2.Add("-"); opers2.Add("*"); opers2.Add("/");
+//opers2.Add("^");

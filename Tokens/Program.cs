@@ -4,6 +4,8 @@
     {
         Console.WriteLine("Enter an expression: ");
         string expression = Console.ReadLine();
+        List<string> opers1 = new List<string> { "+", "-", "*", "/", "^", "(", ")" };
+        List<string> opers2 = new List<string> { "+", "-", "*", "/", "^"};
         Queue<string> queue = new Queue<string>();
         Stack<string> stack = new Stack<string>();
         string[] tokens = new string[50];
@@ -44,11 +46,11 @@
         }
         foreach (string s in tokens)
         {
-            if (!(s == "+" || s == "-" || s == "*" || s == "/" || s == "^" || s == "(" || s == ")"))
+            if (!opers1.Contains(s))
             {
                 queue.Enqueue(s);
             }
-            else if (s == "+" || s == "-" || s == "*" || s == "/" || s == "^")
+            else if (opers2.Contains(s))
             {
                 Dictionary<string, int> priorities = new Dictionary<string, int>
                 {
@@ -66,24 +68,24 @@
                 if (stack.Count > 0 && (stack.Peek() == "+" || stack.Peek() == "-"))
                 {
                     int lastPriority = 1;
-                    string lastOperator = stack.Peek();
-                    if (lastOperator == "+" || lastOperator == "-")
+                    string lastOper = stack.Peek();
+                    if (lastOper == "+" || lastOper == "-")
                     {
                         lastPriority = 1;
                     }
-                    else if (lastOperator == "*" || lastOperator == "/")
+                    else if (lastOper == "*" || lastOper == "/")
                     {
                         lastPriority = 2;
                     }
-                    else if (lastOperator == "^")
+                    else if (lastOper == "^")
                     {
                         lastPriority = 3;
                     }
 
                     if (curPriority <= lastPriority)
                     {
-                        lastOperator = stack.Pop();
-                        queue.Enqueue(lastOperator);
+                        lastOper = stack.Pop();
+                        queue.Enqueue(lastOper);
                     }
                 }
 
@@ -113,44 +115,42 @@
             queue.Enqueue(lastOperator);
         }
 
-        foreach (var token in queue)
+        foreach (var q in queue)
         {
-            if (token is null)
+            if (q is null)
             {
                 continue;
             }
-            if (token == "+" || token == "-" || token == "*" || token == "/" || token == "^")
+            if (opers2.Contains(q))
             {
                 double operand2 = Double.Parse(stack.Pop());
                 double operand1 = Double.Parse(stack.Pop());
                 double result = 0;
-                
-                if (token == "+")
+                if (q == "+")
                 {
                     result = operand1 + operand2;
                 }
-                else if (token == "-")
+                else if (q == "-")
                 {
                     result = operand1 - operand2;
                 }
-                else if (token == "*")
+                else if (q == "*")
                     result = operand1 * operand2;
-                else if (token == "/")
+                else if (q == "/")
                     result = operand1 / operand2;
-                else if (token == "^")
+                else if (q == "^")
                 {
                     result = Math.Pow(operand1, operand2);
                 }
-
                 stack.Push(result.ToString());
             }
-            else if (!(token == "+" || token == "-" || token == "*" || token == "/" || token == "^"))
+            else if (!opers2.Contains(q))
             {
-                double value = double.Parse(token);
-                stack.Push(value.ToString());
+                double newQ = double.Parse(q);
+                stack.Push(newQ.ToString());
             }
         }
-        double finalResult = double.Parse(stack.Pop());
-        Console.WriteLine($"Result: {finalResult}");;
+        double final = double.Parse(stack.Pop());
+        Console.WriteLine($"Result: {final}");
     }
 }
