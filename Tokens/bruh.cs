@@ -6,12 +6,12 @@ internal class MyStack<T>
     public MyStack(int size)
     {
         _items = new T[size];
-        _pointer = -1;
+        _pointer = 0;
     }
 
     public void Push(T item)
     {
-        if (_pointer == _items.Length - 1)
+        if (_pointer == _items.Length)
         {
             throw new StackOverflowException();
         }
@@ -21,7 +21,7 @@ internal class MyStack<T>
 
     public T Pop()
     {
-        if (_pointer == -1)
+        if (_pointer == 0)
         {
             throw new InvalidOperationException();
         }
@@ -32,7 +32,7 @@ internal class MyStack<T>
 
     public T Peek()
     {
-        if (_pointer == -1)
+        if (_pointer == 0)
         {
             throw new InvalidOperationException();
         }
@@ -41,7 +41,7 @@ internal class MyStack<T>
 
     public int Count
     {
-        get { return _pointer + 1; }
+        get { return _pointer; }
     }
 }
 public class MyQueue<T>
