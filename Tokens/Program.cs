@@ -6,16 +6,8 @@
         string expression = Console.ReadLine();
         List<string> opers1 = new List<string> { "+", "-", "*", "/", "^", "(", ")" };
         List<string> opers2 = new List<string> { "+", "-", "*", "/", "^"};
-        //var opers1 = new ArrayList();
-        //opers1 = new ArrayList({ "+", "-" })
-        //opers1.Add("+"); opers1.Add("-"); opers1.Add("*"); opers1.Add("/");
-        //opers1.Add("^"); opers1.Add("("); opers1.Add(")");
-        //var opers2 = new ArrayList();
-        //opers2.Add("+"); opers2.Add("-"); opers2.Add("*"); opers2.Add("/");
-        //opers2.Add("^");
-        Queue<string> queue = new Queue<string>();
         var stack = new MyStack();
-        //var queue = new MyQueue();
+        var queue = new MyQueue();
         string[] tokens = new string[50];
         int priority = 0;
         string buffer = "";
@@ -116,14 +108,12 @@
                 }
             }
         }
-
         while (stack.Count() > 0)
         {
             string lastOperator = stack.Pop();
             queue.Enqueue(lastOperator);
         }
-        foreach (var q in queue)
-        //foreach (queue.Contain(q))
+        foreach (string q in queue.GetElements())
         {
             if (q is null)
             {
